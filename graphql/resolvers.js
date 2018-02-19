@@ -1,7 +1,7 @@
 export default {
     Query: {
         allCats: async(parent, args, { Cat }) => {
-            // { _id: 123, name: "thisName" }
+            // Mongoose _id by default is an object, map to string
             const cats = await Cat.find();
             return cats.map(x => {
                 x._id = x._id.toString();
@@ -9,7 +9,6 @@ export default {
             });
         },
         allDogs: async(parent, args, { Dog }) => {
-            // { _id: 123, name: "thisName" }
             const dogs = await Dog.find();
             return dogs.map(x => {
                 x._id = x._id.toString();
